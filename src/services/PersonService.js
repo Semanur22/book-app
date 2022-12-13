@@ -7,10 +7,8 @@ class PersonService {
 
   async getOnePerson(id) {
     const url = `${this.baseUrl}/${id}`;
-    return await axios
-      .get(url)
-      .then((resp) => resp.data)
-      .catch((err) => console.log(err));
+    return await axios.get(url)
+    
   }
 
   async getAllPersons() {
