@@ -23,8 +23,9 @@ function App() {
           <Route exact path="/api/books/choose/:personId" element={<ChooseBook />}></Route>
           <Route exact path="/api/borrowBooks" element={<ReturnBook />}></Route>
           <Route exact path="/api/borrowBooks/blackList" element={<BlackList />}></Route>
-          <Route exact path="/api/books/onay/:personId/book/:bookId" element={<AddBorrowBook />}></Route>
+          <Route  path="/api/books/onay/:personId/book/:bookId" element={<AddBorrowBook />}></Route>
           <Route exact path="/api/persons/registered/:personId" element={<PersonRegistered />}></Route>
+          <Route  path="/api/borrowBooks/blackLists/:borrowBookId" element={<BlackList />}></Route>
   
         </Routes>
       </Router>

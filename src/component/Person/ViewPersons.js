@@ -2,9 +2,11 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import ChooseBook from '../Book/ChooseBook';
+import { Button } from 'semantic-ui-react'
 
 export default function Home() {
   let navigate = useNavigate();
+
   const [persons, setPersons] = useState([]);
   useEffect(() => {
     loadPersons();
@@ -19,6 +21,16 @@ export default function Home() {
     //await axios.post("/api/persons", person);
     console.log(id);
     navigate("/api/books/choose", id);
+  };
+
+  const [borrowBooks, setBorrowBooks] = useState([]);
+  useEffect(() => {
+    loadBorrowBooks();
+  }, []);
+
+  const loadBorrowBooks = async () => {
+    const result = await axios.get("/api/borrowBooks");
+    setBorrowBooks(result.data);
   };
 
 
@@ -42,53 +54,43 @@ export default function Home() {
               </tr>
             </thead>
             <tbody>
+          
+              
               {persons.map((person, index) => (
+              
                 <tr>
                   <td>{person.nameSurname}</td>
                   <td>{person.tc}</td>
                   <td>{person.phoneNumber}</td>
-                  <td>
-                    <Link to={{ pathname: '/api/books/choose/' + person.id }}>Kitap Seç</Link>
-                  </td>
-                  {/* <td><Link className="btn btn-outline-primary" to="/api/books/choose">
-                     Kitap Seç
-                </Link></td> */}
-                  {/* <Button
-  onClick={() => {
-    navigate({ChooseBook})
-  }}
->
-  Click me
-</Button> */}
+                  {borrowBooks.map((borrowBook, index) => (
+                    <>
+                      
+                    
+                        {(() => {
+                         
+                          if( borrowBook.personId == person.id ){
+                            person.a=1;
+                             
+                          }
+                         
+                        })()}
+                    
+
+                    </>
+                  ))}
+                    {(() => {
+                  if(person.a==1){  //personun normalde a diye bi degeri yok??
+                    return <button class="ui disabled button" disabled="" tabindex="-1">Kitap Seçili</button>; 
+                  }
+                  else{
+                    return <Link to={{ pathname: '/api/books/choose/' + person.id }}>Kitap Seç</Link> ;
+                  }
+                   })()} 
 
 
-
-
-
-                  {/* userlar person olacak
-                
-                <td>
-                  <Link
-                    className="btn btn-primary mx-2"
-                    to={`/viewuser/${user.id}`}
-                  >
-                    View
-                  </Link>
-                  <Link
-                    className="btn btn-outline-primary mx-2"
-                    to={`/edituser/${user.id}`}
-                  >
-                    Edit
-                  </Link>
-                  <button
-                    className="btn btn-danger mx-2"
-                    onClick={() => deleteUser(user.id)}
-                  >
-                    Delete
-                  </button>
-                </td> */}
                 </tr>
               ))}
+          
             </tbody>
           </table>
         </div>

@@ -5,17 +5,27 @@ import AddBook from "../Book/AddBook";
 import AddPerson from "../Person/AddPerson";
 import BorrowBooks from "./ReturnBook";
 export default function BlackList(props) {
+  let navigate = useNavigate();
+
   const [borrowBooks, setBorrowBooks] = useState([]);
   useEffect(() => {
+    
     loadBorrowBooks();
+    
   }, []);
-
+  
   const loadBorrowBooks = async () => {
+   
     const result = await axios.get("/api/borrowBooks");
     setBorrowBooks(result.data);
   };
   return (
-    <div>
+    <><>
+    <button onClick={() => navigate(-1)}>Geri</button>
+  </>
+    <div className="container">
+      <h1 className="text-center m-4">Kitap Ödünç Verme Sistemi</h1>
+      <h2 className="text-center m-4">Kara Liste</h2>
       {
         <table className="table border shadow">
           <thead>
@@ -45,7 +55,7 @@ export default function BlackList(props) {
           </tbody>
         </table>
       }
-    </div>
+    </div></>
   )
 
 }

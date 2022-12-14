@@ -103,7 +103,7 @@ export default function AddPerson() {
                   required
                   onChange={(e) => onInputChange(e)} />
               </div>
-              <button type="submit"  >
+              <button type="submit"  className="btn btn-outline-primary">
                 Devam Et
               </button>
 

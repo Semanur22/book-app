@@ -14,10 +14,7 @@ export default function BorrowBooks() {
     loadBorrowBooks();
   }, []);
 
-  // function handleReturn(params) {
-  //   borrowBooks.
-    
-  // }
+
 
   const loadBorrowBooks = async () => {
     const result = await axios.get("/api/borrowBooks");
@@ -29,11 +26,7 @@ export default function BorrowBooks() {
     loadBorrowBooks();
   };
 
-  function handleBlack(params) {
-    setBorrowBooks.black(1);
-    
-  }
-
+ 
   const addBlackList= async (id) => {
 
     await axios.put(`/api/borrowBooks/blackList/${id}`, borrowBooks)

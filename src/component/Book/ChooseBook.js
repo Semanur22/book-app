@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
-import PersonService from "../../services/PersonService";
+
 
 export default function ChooseBook(state) {
 
@@ -10,13 +10,18 @@ export default function ChooseBook(state) {
 
   const { personId } = useParams();
 
-  const [person,setPerson]=useState({});
 
-  useEffect(()=>{
-    let personService=new PersonService()
-    personService.getOnePerson(personId).then(result=>setPerson(result.data.data))
+  // const [person, setPerson] = useState({});
+  // useEffect(() => {
+  //   loadPerson();
+  // }, []);
 
-  },[])
+  // const loadPerson = async () => {
+  //   const result = await axios.get(`/api/persons/${personId}`);
+  //   setPerson(result.data);
+  // }; 
+  //servis kullanmadan kisi id si ile tum bilgileri cagirma
+
   const [books, setBooks] = useState([]);
   useEffect(() => {
     loadBooks();
@@ -32,17 +37,14 @@ export default function ChooseBook(state) {
     <><>
       <button onClick={() => navigate(-1)}>Geri</button>
     </>
-    hftjtkft
 
-      {person.nameSurname}
-      {personId}
+
+
+      {/* {person.nameSurname} */}
       <div className="container">
         <h1 className="text-center m-4">Kitap Ödünç Verme Sistemi</h1>
         <h2 className="text-center m-4">Kitap Seç</h2>
         <div className="py-4">
-
-
-
           <table className="table border shadow">
             <thead>
               <tr>
@@ -52,21 +54,12 @@ export default function ChooseBook(state) {
             <tbody>
               {books.map((book, index) => (
                 <tr>
-
                   <td>{book.bookName}</td>
                   <td>
 
-
-
                     <Link to={{ pathname: '/api/books/onay/' + personId + '/book/' + book.id }}>Kitap Seç</Link>
 
-
-
-
                   </td>
-
-
-
 
                 </tr>
               ))}
