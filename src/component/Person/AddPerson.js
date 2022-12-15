@@ -32,16 +32,17 @@ export default function AddPerson() {
   const onSubmit = async (e) => {
     e.preventDefault();
     await axios.post("/api/persons", person);
-    navigate("/api/books/choose/${id}");
+    navigate("/api/persons/registered");
   };
 
 
 
 
   return (
-    <><>
-      <button onClick={() => navigate(-1)}>Geri</button>
-    </><div className="container">
+    <div className="container">
+      <><>
+      <button className="btn btn-outline-primary" onClick={() => navigate(-1)}>Geri</button>
+    </>
         <div className="row">
           <div className="col-md-6 offset-md-3 border rounded p-4 mt-2 shadow">
             <h1 className="text-center m-4">Kitap Ödünç Verme Sistemi</h1>
@@ -109,7 +110,7 @@ export default function AddPerson() {
 
             </form>
           </div>
-        </div>
-      </div></>
+        </div></>
+      </div>
   );
 }

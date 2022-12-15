@@ -9,6 +9,13 @@ import ReturnBook from './component/BorrowBook/ReturnBook';
 import BlackList from './component/BorrowBook/BlackList';
 import AddBorrowBook from './component/BorrowBook/AddBorrowBook';
 import PersonRegistered from "./component/Person/PersonRegistered";
+import AddBlackList from './component/BorrowBook/AddBlackList';
+import Okey from './component/BorrowBook/Okey';
+import AddedBorrowBook from './component/BorrowBook/AddedBorrowBook';
+import ReturnedBorrowBook from './component/BorrowBook/ReturnedBorrowBook';
+import OkeyReturned from './component/BorrowBook/OkeyReturned';
+import AddedBlackList from './component/BorrowBook/AddedBlackList';
+import AddedBook from './component/Book/AddedBook';
 
 function App() {
   return (
@@ -24,9 +31,19 @@ function App() {
           <Route exact path="/api/borrowBooks" element={<ReturnBook />}></Route>
           <Route exact path="/api/borrowBooks/blackList" element={<BlackList />}></Route>
           <Route  path="/api/books/onay/:personId/book/:bookId" element={<AddBorrowBook />}></Route>
-          <Route exact path="/api/persons/registered/:personId" element={<PersonRegistered />}></Route>
+          <Route exact path="/api/persons/registered" element={<PersonRegistered />}></Route>
           <Route  path="/api/borrowBooks/blackLists/:borrowBookId" element={<BlackList />}></Route>
-  
+          <Route  path="/api/black/:borrowBookId" element={<AddBlackList />}></Route>
+          <Route  path="/api/black/okey/:borrowBookId" element={<Okey />}></Route>
+          <Route  path="/api/black/delete/:borrowBookId" element={<ReturnedBorrowBook />}></Route>
+          <Route  path="/api/borrowBooks/added" element={<AddedBorrowBook />}></Route>
+          <Route  path="/api/borrowBooks/okeyReturned" element={<OkeyReturned />}></Route>
+          <Route  path="/api/black/added" element={<AddedBlackList />}></Route>
+          <Route  path="/api/books/added" element={<AddedBook />}></Route>
+
+          
+         
+    
         </Routes>
       </Router>
         

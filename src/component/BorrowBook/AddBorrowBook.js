@@ -34,14 +34,17 @@ export default function Onay() {
     
     e.preventDefault();
     await axios.post("/api/borrowBooks", borrowBook);
-    navigate("/");
+    navigate("/api/borrowBooks/added");
   };
 
   const { day } = borrowBook;
 
 
   return (
-    <div>
+    <><>
+    <button className="btn btn-outline-primary" onClick={() => navigate(-1)}>Geri</button>
+  </>
+    <div className="container">
       <div className="container"></div>
       <div className="py-4">
         <h2 className="text-center m-4">Gün Sayısı</h2>
@@ -49,7 +52,7 @@ export default function Onay() {
 
           <div className="mb-3">
 
-
+  
             <input
               type={"text"}
               className="form-control"
@@ -63,12 +66,12 @@ export default function Onay() {
               required
               onChange={(e) => onNumberInputChange(e)} />
           </div>
-          <button >
+          <button className="btn btn-outline-primary" >
             Onayla
           </button>
         </form>
       </div>
-    </div>
+    </div></>
 
 
   )

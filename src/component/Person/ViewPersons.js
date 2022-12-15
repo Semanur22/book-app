@@ -6,6 +6,8 @@ import { Button } from 'semantic-ui-react'
 
 export default function Home() {
   let navigate = useNavigate();
+  
+
 
   const [persons, setPersons] = useState([]);
   useEffect(() => {
@@ -16,12 +18,7 @@ export default function Home() {
     const result = await axios.get("/api/persons");
     setPersons(result.data);
   };
-  const onSubmit = async (e, id) => {
-    e.preventDefault();
-    //await axios.post("/api/persons", person);
-    console.log(id);
-    navigate("/api/books/choose", id);
-  };
+ 
 
   const [borrowBooks, setBorrowBooks] = useState([]);
   useEffect(() => {
@@ -37,7 +34,7 @@ export default function Home() {
 
   return (
     <><>
-      <button onClick={() => navigate(-1)}>Geri</button>
+      <button className="btn btn-outline-primary" onClick={() => navigate(-1)}>Geri</button>
     </>
       <div className="container">
         <h1 className="text-center m-4">Kitap Ödünç Verme Sistemi</h1>
@@ -50,47 +47,50 @@ export default function Home() {
                 <th scope="col">Ad Soyad</th>
                 <th scope="col">TC Kimlik No</th>
                 <th scope="col">Tel NO</th>
-                <th scope="col">Kitap Seç</th>
+                <th scope="col"></th>
               </tr>
             </thead>
             <tbody>
-          
-              
+
+
               {persons.map((person, index) => (
-              
+
                 <tr>
                   <td>{person.nameSurname}</td>
                   <td>{person.tc}</td>
                   <td>{person.phoneNumber}</td>
                   {borrowBooks.map((borrowBook, index) => (
                     <>
-                      
-                    
-                        {(() => {
-                         
-                          if( borrowBook.personId == person.id ){
-                            person.a=1;
-                             
-                          }
-                         
-                        })()}
-                    
+                  
+
+                      {(() => {
+
+                        if (borrowBook.personId == person.id) {
+                          person.a = 1;
+
+                        }
+
+                      })()}
+
 
                     </>
                   ))}
+                  <td>
                     {(() => {
-                  if(person.a==1){  //personun normalde a diye bi degeri yok??
-                    return <button class="ui disabled button" disabled="" tabindex="-1">Kitap Seçili</button>; 
-                  }
-                  else{
-                    return <Link to={{ pathname: '/api/books/choose/' + person.id }}>Kitap Seç</Link> ;
-                  }
-                   })()} 
+                      if (person.a == 1) {  //personun normalde a diye bi degeri yok??
+                        return <button  class="ui disabled button" disabled="" tabindex="-1">Kitap Seçili</button>;
+                      }
+                      else {
+                        return <Link  className="btn btn-outline-primary" to={{ pathname: '/api/books/choose/' + person.id }}>Kitap Seç</Link>;
+                      }
+
+                    })()}
+                  </td>
 
 
                 </tr>
               ))}
-          
+
             </tbody>
           </table>
         </div>

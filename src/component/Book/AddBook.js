@@ -18,12 +18,12 @@ export default function AddBook() {
   const onSubmit = async (e) => {
     e.preventDefault();
     await axios.post("/api/books", book);
-    navigate("/");
+    navigate("/api/books/added");
   };
 
   return (
     <><>
-      <button onClick={() => navigate(-1)}>Geri</button>
+      <button className="btn btn-outline-primary" onClick={() => navigate(-1)}>Geri</button>
     </>
       <div className="container">
         <div className="row">

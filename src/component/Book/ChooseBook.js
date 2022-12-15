@@ -35,7 +35,7 @@ export default function ChooseBook(state) {
 
   return (
     <><>
-      <button onClick={() => navigate(-1)}>Geri</button>
+      <button className="btn btn-outline-primary"   onClick={() => navigate(-1)}>Geri</button>
     </>
 
 
@@ -57,7 +57,7 @@ export default function ChooseBook(state) {
                   <td>{book.bookName}</td>
                   <td>
 
-                    <Link to={{ pathname: '/api/books/onay/' + personId + '/book/' + book.id }}>Kitap Seç</Link>
+                    <Link className="btn btn-outline-primary"  to={{ pathname: '/api/books/onay/' + personId + '/book/' + book.id }}>Kitap Seç</Link>
 
                   </td>
 
