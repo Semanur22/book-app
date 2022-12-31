@@ -49,12 +49,16 @@ export default function ChooseBook(state) {
             <thead>
               <tr>
                 <th scope="col">Kitap Adı</th>
+                <th scope="col">Kitabın Yazarı</th>
+                <th scope="col">Kitap Türü</th>
               </tr>
             </thead>
             <tbody>
               {books.map((book, index) => (
                 <tr>
                   <td>{book.bookName}</td>
+                  <td>{book.author}</td>
+                  <td>{book.bookType}</td>
                   <td>
 
                     <Link className="btn btn-outline-primary"  to={{ pathname: '/api/books/onay/' + personId + '/book/' + book.id }}>Kitap Seç</Link>

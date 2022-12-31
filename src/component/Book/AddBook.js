@@ -7,9 +7,11 @@ export default function AddBook() {
 
   const [book, setBook] = useState({
     bookName: "",
+    author:"",
+    bookType:"",
   });
 
-  const { bookName } = book;
+  const { bookName, author, bookType} = book;
 
   const onInputChange = (e) => {
     setBook({ ...book, [e.target.name]: e.target.value });
@@ -40,6 +42,32 @@ export default function AddBook() {
                   placeholder="Kitap Adı"
                   name="bookName"
                   value={bookName}
+                  maxLength={24}
+                  required
+                  onChange={(e) => onInputChange(e)}
+                />
+              </div>
+              <div className="mb-3">
+
+                <input
+                  type={"text"}
+                  className="form-control"
+                  placeholder="Kitabın Yazarı"
+                  name="author"
+                  value={author}
+                  maxLength={24}
+                  required
+                  onChange={(e) => onInputChange(e)}
+                />
+              </div>
+              <div className="mb-3">
+
+                <input
+                  type={"text"}
+                  className="form-control"
+                  placeholder="Kitap Türü"
+                  name="bookType"
+                  value={bookType}
                   maxLength={24}
                   required
                   onChange={(e) => onInputChange(e)}

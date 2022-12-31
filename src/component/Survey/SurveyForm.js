@@ -57,7 +57,7 @@ export default function SurveyForm() {
 
         <br></br>
         <br></br>
-
+    
         <div>
           <button className="btn btn-outline-primary" onClick={(e) => whichOne(e)}>Gönder</button>
         </div>
