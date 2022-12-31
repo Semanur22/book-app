@@ -41,6 +41,7 @@ export default function AddBook() {
                   name="bookName"
                   value={bookName}
                   maxLength={24}
+                  required
                   onChange={(e) => onInputChange(e)}
                 />
               </div>

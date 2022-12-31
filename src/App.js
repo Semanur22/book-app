@@ -16,6 +16,9 @@ import ReturnedBorrowBook from './component/BorrowBook/ReturnedBorrowBook';
 import OkeyReturned from './component/BorrowBook/OkeyReturned';
 import AddedBlackList from './component/BorrowBook/AddedBlackList';
 import AddedBook from './component/Book/AddedBook';
+import SurveyForm from './component/Survey/SurveyForm';
+import ResultSurvey from './component/Survey/ResultSurvey';
+import CompiledSurvey from './component/Survey/CompiledSurvey';
 
 function App() {
   return (
@@ -40,7 +43,9 @@ function App() {
           <Route  path="/api/borrowBooks/okeyReturned" element={<OkeyReturned />}></Route>
           <Route  path="/api/black/added" element={<AddedBlackList />}></Route>
           <Route  path="/api/books/added" element={<AddedBook />}></Route>
-
+          <Route  path="/api/survey" element={<SurveyForm />}></Route>
+          <Route  path="/api/survey/result" element={<ResultSurvey />}></Route>
+          <Route  path="/api/survey/compile" element={<CompiledSurvey />}></Route>
           
          
     

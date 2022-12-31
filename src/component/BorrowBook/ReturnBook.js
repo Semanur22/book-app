@@ -30,14 +30,11 @@ export default function BorrowBooks() {
     setBlackLists(result.data);
   };
 
-  const returnBook = async (id) => {
-    await axios.delete(`/api/borrowBooks/${id}`);
-    loadBorrowBooks();
-  };
+ 
 
   return (
     <><>
-      <button className="btn btn-outline-primary"onClick={() => navigate(-1)}>Geri</button>
+      <button className="btn btn-outline-primary" onClick={() => navigate(-1)}>Geri</button>
     </>
 
       <div className="container">
@@ -49,7 +46,7 @@ export default function BorrowBooks() {
               <tr>
                 <th scope="col">Ad Soyad</th>
                 <th scope="col">TC Kimlik No</th>
-                <th scope="col">Kitap Adı</th>  
+                <th scope="col">Kitap Adı</th>
                 <th scope="col">Teslim Edildi Mi?</th>
               </tr>
             </thead>
@@ -62,11 +59,11 @@ export default function BorrowBooks() {
                   <td>{borrowBook.personTc}</td>
                   <td>{borrowBook.bookName}</td>
 
-                 
+
                   {blackLists.map((blackList, index) => (
                     <>
 
-                      
+
                       {(() => {
 
                         if (borrowBook.id == blackList.borrowBookId) {
@@ -76,14 +73,13 @@ export default function BorrowBooks() {
 
                       })()}
 
-
                     </>
                   ))}
 
                   <td>
                     {(() => {
                       if (borrowBook.a == 1) {  //personun normalde a diye bi degeri yok??
-                        return "Kara Listede";
+                        return <button  class="ui disabled button" disabled="" tabindex="-1">Kara Kistede</button>;
 
                       }
 
@@ -91,10 +87,8 @@ export default function BorrowBooks() {
 
                         return <form>
                           <button class="ui positive button" onClick={() => navigate(`/api/black/delete/${borrowBook.id}`)}>
-                          <AiFillCheckSquare />
+                            <AiFillCheckSquare />
                           </button>
-                     
-                         
 
                           <button class="ui negative button" onClick={() => navigate(`/api/black/${borrowBook.id}`)}>
                             <CancelPresentationIcon />
@@ -103,19 +97,9 @@ export default function BorrowBooks() {
 
                     })()}
                   </td>
-
-
-
-
                   <td>
-
-
-
                   </td>
                 </tr>
-
-
-
               ))}
             </tbody>
           </table>

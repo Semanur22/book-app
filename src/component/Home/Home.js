@@ -31,6 +31,15 @@ export default function Home() {
           <Link className="btn btn-outline-primary" to="/api/borrowBooks/blackList">
             Kara Liste
           </Link>
+          <br></br>
+          <br></br>
+          <Link className="btn btn-outline-primary" class="ui positive button" to="/api/survey">
+            Anket
+          </Link>
+          
+          <Link className="btn btn-outline-primary" class="ui positive button" to="/api/survey/result">
+            Sonuç
+          </Link>
         </div>
       </div>
     </div>

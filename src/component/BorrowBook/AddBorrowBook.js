@@ -54,13 +54,13 @@ export default function Onay() {
 
   
             <input
-              type={"text"}
+              type={"number"}
               className="form-control"
               placeholder="Gün Sayısı"
               name="day"
               value={day}
-              min={1}
-              max={14}
+              min="1"
+              max="14"
 
 
               required

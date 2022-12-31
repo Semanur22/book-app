@@ -1,14 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link, useNavigate, useLocation } from "react-router-dom";
-import ChooseBook from '../Book/ChooseBook';
-import { Button } from 'semantic-ui-react'
+import { Link, useNavigate } from "react-router-dom";
+
 
 export default function Home() {
   let navigate = useNavigate();
   
-
-
   const [persons, setPersons] = useState([]);
   useEffect(() => {
     loadPersons();
@@ -29,6 +26,20 @@ export default function Home() {
     const result = await axios.get("/api/borrowBooks");
     setBorrowBooks(result.data);
   };
+
+  const fonk= () => {
+    axios.post('/api/persons/2/1', {
+      variableId: 1,
+
+
+    })
+      .then(response => {
+        console.log(response.data);
+      });
+      navigate("/")
+
+  }
+  
 
 
 
@@ -52,7 +63,7 @@ export default function Home() {
             </thead>
             <tbody>
 
-
+            
               {persons.map((person, index) => (
 
                 <tr>
